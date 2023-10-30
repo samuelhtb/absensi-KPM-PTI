@@ -9,7 +9,8 @@ startButton.addEventListener('click', async () => {
       output.innerHTML = '';
       for (const record of event.message.records) {
         if (record.recordType === 'url') {
-          const url = new TextDecoder().decode(record.data);
+          const urlDecoder = new TextDecoder();
+          const url = urlDecoder.decode(record.data);
           const a = document.createElement('a');
           a.href = url;
           a.textContent = url;
@@ -17,7 +18,8 @@ startButton.addEventListener('click', async () => {
           output.appendChild(a);
         } else {
           const p = document.createElement('p');
-          p.textContent = record.recordType + ": " + new TextDecoder().decode(record.data);
+          const textDecoder = new TextDecoder();
+          p.textContent = record.recordType + ": " + textDecoder.decode(record.data);
           output.appendChild(p);
         }
       }
