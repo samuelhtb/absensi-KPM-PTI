@@ -6,9 +6,20 @@ startButton.addEventListener('click', async () => {
     const reader = new NDEFReader();
     await reader.scan();
     reader.onreading = event => {
-      output.textContent = '';
+      output.innerHTML = '';
       for (const record of event.message.records) {
-        output.textContent += record.recordType + ": " + record.data + "\n";
+        if (record.recordType === 'url') {
+          const url = new TextDecoder().decode(record.data);
+          const a = document.createElement('a');
+          a.href = url;
+          a.textContent = url;
+          a.target = '_blank'; // Opens the URL in a new tab
+          output.appendChild(a);
+        } else {
+          const p = document.createElement('p');
+          p.textContent = record.recordType + ": " + new TextDecoder().decode(record.data);
+          output.appendChild(p);
+        }
       }
     };
   } catch (error) {
