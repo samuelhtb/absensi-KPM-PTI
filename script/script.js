@@ -6,7 +6,8 @@ startButton.addEventListener('click', async () => {
     const reader = new NDEFReader();
     await reader.scan();
     reader.onreading = event => {
-      output.innerHTML = '';
+      const currentTime = new Date().toLocaleTimeString();
+      output.innerHTML = `<p>Waktu Pembacaan NFC: ${currentTime}</p>`;
       for (const record of event.message.records) {
         const recordType = record.recordType;
         const textDecoder = new TextDecoder();
@@ -15,15 +16,15 @@ startButton.addEventListener('click', async () => {
         if (recordType === 'url') {
           // Handle URL record
           const url = textDecoder.decode(record.data);
-          content = `<a href="${url}" target="_blank">${url}</a>`;
+          content = `<p><strong>URL:</strong> <a href="${url}" target="_blank">${url}</a></p>`;
         } else if (recordType === 'text') {
           // Handle text record
           const text = textDecoder.decode(record.data);
-          content = `<p>${text}</p>`;
+          content = `<p><strong>Text:</strong> ${text}</p>`;
         } else {
           // Handle other record types
           const rawData = textDecoder.decode(record.data);
-          content = `<p>${recordType}: ${rawData}</p>`;
+          content = `<p><strong>${recordType}:</strong> ${rawData}</p>`;
         }
 
         output.innerHTML += content;
