@@ -8,20 +8,25 @@ startButton.addEventListener('click', async () => {
     reader.onreading = event => {
       output.innerHTML = '';
       for (const record of event.message.records) {
-        if (record.recordType === 'url') {
-          const urlDecoder = new TextDecoder();
-          const url = urlDecoder.decode(record.data);
-          const a = document.createElement('a');
-          a.href = url;
-          a.textContent = url;
-          a.target = '_blank'; // Opens the URL in a new tab
-          output.appendChild(a);
+        const recordType = record.recordType;
+        const textDecoder = new TextDecoder();
+
+        let content;
+        if (recordType === 'url') {
+          // Handle URL record
+          const url = textDecoder.decode(record.data);
+          content = `<a href="${url}" target="_blank">${url}</a>`;
+        } else if (recordType === 'text') {
+          // Handle text record
+          const text = textDecoder.decode(record.data);
+          content = `<p>${text}</p>`;
         } else {
-          const p = document.createElement('p');
-          const textDecoder = new TextDecoder();
-          p.textContent = record.recordType + ": " + textDecoder.decode(record.data);
-          output.appendChild(p);
+          // Handle other record types
+          const rawData = textDecoder.decode(record.data);
+          content = `<p>${recordType}: ${rawData}</p>`;
         }
+
+        output.innerHTML += content;
       }
     };
   } catch (error) {
