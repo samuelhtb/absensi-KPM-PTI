@@ -4,10 +4,14 @@
     background-color: rgb(255, 255, 255);
 }
 
+body {
+    padding: 0px 25px 0px 25px;
+}
+
 .navigation {
     display: flex;
     justify-content: space-between;
-    padding: 10px 20px 10px  ;
+    padding: 0px 10px;
     position: relative;
     border-bottom: 1px solid black;
 }
@@ -59,4 +63,25 @@
 
 .left {
     
+}
+
+@media only screen and (max-width: 767px) {
+    body {
+        margin: 5%;
+        
+    }
+
+    .nav-items {
+        display: none;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+    }
+
+    .titles {
+        margin: auto;
+    }
 }

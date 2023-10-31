@@ -7,7 +7,7 @@ startButton.addEventListener('click', async () => {
     await reader.scan();
     reader.onreading = event => {
       const currentTime = new Date().toLocaleTimeString();
-      output.innerHTML = `<p>Waktu Pembacaan NFC: ${currentTime}</p>`;
+      output.innerHTML = `<p>Waktu Absensi: ${currentTime}</p>`;
       for (const record of event.message.records) {
         const recordType = record.recordType;
         const textDecoder = new TextDecoder();
