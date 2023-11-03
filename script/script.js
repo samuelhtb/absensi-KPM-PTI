@@ -24,7 +24,7 @@ startButton.addEventListener('click', async () => {
         } else if (recordType === 'text') {
           // Handle text record
           const text = textDecoder.decode(record.data);
-          content = `<p><strong>Text:</strong> ${text}</p>`;
+          content = `<p><strong>Nama:</strong> ${text}</p>`;
         } else {
           // Handle other record types
           const rawData = textDecoder.decode(record.data);
