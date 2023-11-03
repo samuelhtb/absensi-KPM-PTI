@@ -10,7 +10,7 @@ startButton.addEventListener('click', async () => {
       const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' };
       const formattedTime = currentTime.toLocaleDateString(undefined, options);
       
-      output.innerHTML = `<p>Waktu Pembacaan NFC: ${formattedTime}</p>`;
+      output.innerHTML = `<p>Waktu Absen: ${formattedTime}</p>`;
       
       for (const record of event.message.records) {
         const recordType = record.recordType;
@@ -24,7 +24,7 @@ startButton.addEventListener('click', async () => {
         } else if (recordType === 'text') {
           // Handle text record
           const text = textDecoder.decode(record.data);
-          content = `<p><strong>Text:</strong> ${text}</p>`;
+          content = `<p><strong>Nama:</strong> ${text}</p>`;
         } else {
           // Handle other record types
           const rawData = textDecoder.decode(record.data);
