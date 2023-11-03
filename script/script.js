@@ -6,8 +6,12 @@ startButton.addEventListener('click', async () => {
     const reader = new NDEFReader();
     await reader.scan();
     reader.onreading = event => {
-      const currentTime = new Date().toLocaleTimeString();
-      output.innerHTML = `<p>Waktu Absensi: ${currentTime}</p>`;
+      const currentTime = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' };
+      const formattedTime = currentTime.toLocaleDateString(undefined, options);
+      
+      output.innerHTML = `<p>Waktu Pembacaan NFC: ${formattedTime}</p>`;
+      
       for (const record of event.message.records) {
         const recordType = record.recordType;
         const textDecoder = new TextDecoder();
