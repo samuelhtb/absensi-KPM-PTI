@@ -10,8 +10,6 @@ startButton.addEventListener('click', async () => {
       const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' };
       const formattedTime = currentTime.toLocaleDateString(undefined, options);
       
-      output.innerHTML = `<p>Waktu Absen: ${formattedTime}</p>`;
-      
       for (const record of event.message.records) {
         const recordType = record.recordType;
         const textDecoder = new TextDecoder();
@@ -32,6 +30,7 @@ startButton.addEventListener('click', async () => {
         }
 
         output.innerHTML += content;
+        output.innerHTML = `<p>Waktu Absen: ${formattedTime}</p>`;
       }
     };
   } catch (error) {
