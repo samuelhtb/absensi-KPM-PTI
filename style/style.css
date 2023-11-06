@@ -16,8 +16,20 @@ body {
         radial-gradient(at 20% 98%, rgb(1, 200, 255) 0px, transparent 50%),
         radial-gradient(at 44% 9%, rgb(70, 117, 187) 0px, transparent 50%),
         radial-gradient(at 10% 9%, rgb(111, 147, 255) 0px, transparent 50%);
-    min-height: 150vh;
+    /* min-height: 150vh; */
     /* margin: 50px; */
+}
+
+.glass {
+    padding: 20px;
+    padding-top: 5px;
+    border-radius: 14px;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(11.6px);
+    -webkit-backdrop-filter: blur(11.6px);
+    margin-top: 30px;
+    height: 100%;
+    width: 100%;
 }
 
 .navigation {
@@ -32,6 +44,7 @@ body {
     font-size: 2em;
     color: rgb(255, 255, 255);
 }
+
 .titles {
     display: flex;
     flex-direction: row-reverse;
@@ -42,6 +55,7 @@ body {
     font-size: 35px;
     padding-left: 20px;
 }
+
 .logo-title {
     width: 50px;
     height: 50px;
@@ -70,19 +84,6 @@ body {
     font-weight: 600;
 }
 
-.glass-home {
-    padding: 20px;
-    padding-top: 5px;
-    border-radius: 14px;
-    display: blphofnnock;
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(11.6px);
-    -webkit-backdrop-filter: blur(11.6px);
-    margin-top: 30px;
-    height: 100%;
-    width: 100%;
-}
-
 .main {
     display: flex;
     align-items: center;
@@ -105,16 +106,55 @@ button {
     border: 0px;
     height: 40px;
 }
+
 button:hover {
     cursor: pointer;
     border-color: #2668db;
     background-color: #69d62e;
     color: white;
-    
 }
 
 .right {
     margin: auto;
+}
+
+.glass-warning {
+    padding: 1px;
+    /* padding-top: 5px; */
+    border-radius: 14px;
+    /* display: blphofnnock; */
+    background: rgba(255, 255, 255, 0.637);
+    width: 100%;
+    text-align: center;
+    color: rgb(139, 0, 0);
+}
+
+.main-contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+}
+
+
+.kiri {
+    padding: 20px 0px 0px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.gmail-logo {
+    width: 50px;
+    margin-left: 40px;
+}
+
+.wa-logo {
+    width:52px;
+    /* border-radius: 50%; */
+}
+
+footer {
+    margin-top: 15px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -145,6 +185,7 @@ button:hover {
     }
 
     .left {
-        margin-top: 18%;
+        margin-top: 10%;
     }
+
 }
